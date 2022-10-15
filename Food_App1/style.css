@@ -1,0 +1,42 @@
+
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: red;
+    color: white;
+}
+
+
+#options {
+    display: flex;
+     gap: 25px;
+     padding-left: 5%;
+     padding-right: 5%;
+     
+}
+
+#options>h3>a {
+    color: white;
+}
+
+#navbar>h3>a {
+    color: white;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+     grid-gap: 20px;
+}
+
+.box {
+    border: 2px solid cyan;
+    text-align: center;
+}
+.rece {
+    color: red;
+}
