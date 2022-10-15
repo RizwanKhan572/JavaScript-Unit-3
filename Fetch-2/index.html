@@ -1,0 +1,123 @@
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        h1 {
+            text-align: center;
+            color: blue;
+        }
+        
+        
+        gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}
+    </style>
+</head>
+<body>
+      <input id="query" placeholder="Enter city name" type="text">
+      <button onclick="getData()">Search Whether</button>
+        <h1>Whether Details</Details></h1>
+      <div id="container"></div>
+
+
+      <div class="mapouter">
+          <div class="gmap_canvas">
+              <iframe width="600" height="500" id="gmap_canvas"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                  
+              </iframe>
+    </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+    const APIkey="0f521175a9723a8f70dd980abab83e79"
+
+
+function getData() {
+    
+ let city=document.getElementById('query').value;
+ let url =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}`;
+
+//  fetch(url)
+// .then(function(res){
+//     return res.json();
+// }).then(function(res){
+//     console.log(res)
+// }).catch(function(err){
+//     console.log("d")
+// })
+
+async function getData() {
+        try {
+            let res= await fetch(url)
+            let Weather = await res.json();
+            appendFunc(Weather)
+        } catch (err){
+            
+        }
+    }
+
+ getData()
+
+}
+
+function appendFunc(Weather) {
+    console.log(Weather)
+    let city=document.getElementById('query').value;
+    document.getElementById('container').innerText=null;
+      let name= document.createElement('h2')
+      
+     
+      name.style.color="red"
+      name.innerText=city;
+      let curTemp= document.createElement('h3')
+    curTemp.innerText= `Current temp : ${Weather.main.temp}`;
+    let minTemp= document.createElement('h3')
+    minTemp.innerText= `Minimum temp : ${Weather.main.temp_min}`;
+    
+    let maxTemp= document.createElement('h3')
+    maxTemp.innerText= `Maximum temp : ${Weather.main.temp_max}`; 
+    
+    let clouds= document.createElement('h3')
+    clouds.innerText= `Clouds : ${Weather.weather[0].main}`; 
+     
+    let imge=document.createElement("img")
+        imge.src="https://i.pinimg.com/originals/2a/12/3e/2a123e196bea0c213da8d6be602ec908.gif"
+       
+       
+    
+    
+        let imge1=document.createElement("img")
+        imge1.src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+        
+        
+    
+    let wind= document.createElement('h3')
+    wind.innerText= ` Wind speed : ${Weather.wind.speed}`;
+  let box= document.createElement('div')
+  box.style.width="300px"
+  
+  
+  
+
+
+  
+   box.append(curTemp,minTemp,maxTemp,wind,clouds)
+   document.getElementById('container').append(name,box,imge,imge1)
+
+   let iframe =document.getElementById('gmap_canvas')
+   iframe.style.marginLeft="700px"
+   iframe.src=`https://maps.google.com/maps?q=${city}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+   
+}
+
+
+
+
+</script>

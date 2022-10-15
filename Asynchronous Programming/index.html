@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie App</title>
+</head>
+<body>
+    
+     <h1 id="h1"></h1>
+  <input id="image" type="url">
+  <button onclick="storeImages()">Store Images</button>
+  <button onclick="watchSlideShow()">Watch Slide Show</button>
+
+</body>
+</html>
+
+
+
+<script>
+
+    function watchSlideShow() {
+        window.location.href="slideShow.html"
+    }
+     
+    function storeImages() {
+        event.preventDefault()
+        let imgArr=JSON.parse(localStorage.getItem("images"))||[];
+     let imgValue=document.querySelector("#image").value;
+     imgArr.push(imgValue)
+     
+       localStorage.setItem("images",JSON.stringify(imgArr))
+       document.querySelector("#image").value= null;
+
+    }
+
+</script>
+
+<script src="main.js"></script>

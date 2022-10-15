@@ -1,0 +1,10 @@
+
+
+#navbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 40px;
+    gap: 20px;
+    background-color: aquamarine;
+}
+

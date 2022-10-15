@@ -1,0 +1,51 @@
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+<script>
+
+
+let f1 = {
+    name: "Amar",
+    skill: "Singer",
+    lives: "Goa",
+    
+}
+
+let f2= { 
+    name: "Akbar",
+    skill: "Chef",
+    lives: "Mumbai"
+}
+
+let f3 = {
+    name: "Anthony",
+    skill: "Magician",
+    lives: "Kashmir"
+}
+
+function skillBorrow() {
+   console.log(`${f1.name} borrows ${f2.skill} and ${f3.skill} skill`)
+   console.log(`${f2.name} borrows ${f3.skill} and ${f1.skill} skill`)
+   console.log(`${f3.name} borrows ${f1.skill} and ${f2.skill}skill`)
+}
+
+skillBorrow.call(f1)
+
+
+    
+
+
+
+</script>

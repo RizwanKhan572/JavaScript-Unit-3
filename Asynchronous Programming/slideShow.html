@@ -1,0 +1,66 @@
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="start()">Start</button>
+    <button onclick="pause()">Pause</button>
+    <div id="container"></div>
+
+</body>
+</html>
+
+
+<script>
+
+
+let i=0;
+let id;
+function pause() {
+        event.preventDefault()
+     clearInterval(id);
+    }
+
+    
+    function start() {
+        event.preventDefault()
+ let images = JSON.parse(localStorage.getItem("images"))
+ document.querySelector("#container")
+
+
+  id = setInterval(() => {
+
+   if(i===images.length) {
+       i=0;
+   }
+
+    container.innerText =null;
+
+    let image = images[i];
+
+    let img = document.createElement("img");
+
+    img.src=image;
+    i++;
+     container.append(img)
+     
+ }, 3000);
+
+
+ 
+    }
+
+
+   
+
+
+</script>
+
+<script src="slideShow.js"></script>
